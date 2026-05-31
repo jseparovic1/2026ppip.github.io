@@ -56,6 +56,30 @@
   let selectedIndex = 0;
   let previewIndex = null;
   let transitionToken = 0;
+  let featuredVideoObserver = null;
+
+  function getConnectionInfo() {
+    return navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
+  }
+
+  function canAutoLoadFeaturedVideo() {
+    const connection = getConnectionInfo();
+    const effectiveType = connection && connection.effectiveType ? connection.effectiveType : "";
+
+    return !(
+      (connection && connection.saveData) ||
+      effectiveType === "slow-2g" ||
+      effectiveType === "2g"
+    );
+  }
+
+  function shouldLazyLoadFeaturedVideo() {
+    const connection = getConnectionInfo();
+    const isTouchViewport = window.matchMedia && window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    const effectiveType = connection && connection.effectiveType ? connection.effectiveType : "";
+
+    return isTouchViewport || effectiveType === "3g";
+  }
 
   function slugifyPlayerName(name) {
     return name
@@ -141,6 +165,7 @@
   const playerPickerCurrentMeta = document.getElementById("player-picker-current-meta");
 
   function renderFeaturedPlayer(player, index) {
+    teardownFeaturedVideo();
     featuredPlayer.style.setProperty("--card-accent", "var(--gold)");
     featuredPlayer.style.setProperty("--focus", player.focus || "center top");
     featuredPlayer.style.setProperty("--image-fit", player.imageFit || "contain");
@@ -153,8 +178,8 @@
     const playerMedia = player.animation && player.image
       ? [
           '    <img class="player-image featured-image player-image-fallback" src="' + player.image + '" alt="Portret igrača ' + player.name + '">',
-          '    <video class="player-image featured-image player-video" muted loop playsinline preload="metadata" poster="' + player.image + '" aria-hidden="true">',
-          '      <source src="' + player.animation + '" type="video/mp4">',
+          '    <video class="player-image featured-image player-video" muted loop playsinline webkit-playsinline preload="none" poster="' + player.image + '" data-video-src="' + player.animation + '" aria-hidden="true">',
+          '      <source data-src="' + player.animation + '" type="video/mp4">',
           "    </video>",
         ].join("")
       : player.image
@@ -189,6 +214,26 @@
       return;
     }
 
+    if (!canAutoLoadFeaturedVideo()) {
+      video.classList.add("is-disabled");
+      return;
+    }
+
+    const loadVideo = function () {
+      const source = video.querySelector("source");
+      if (!source || source.src) {
+        return;
+      }
+
+      source.src = source.dataset.src || video.dataset.videoSrc || "";
+      video.load();
+    };
+
+    const playVideo = function () {
+      loadVideo();
+      video.play().catch(function () {});
+    };
+
     video.addEventListener("loadeddata", function () {
       video.classList.add("is-ready");
       video.play().catch(function () {});
@@ -201,6 +246,45 @@
       },
       true,
     );
+
+    featuredVideoObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            playVideo();
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.24,
+        rootMargin: shouldLazyLoadFeaturedVideo() ? "160px 0px" : "360px 0px",
+      }
+    );
+
+    featuredVideoObserver.observe(video);
+
+  }
+
+  function teardownFeaturedVideo() {
+    const video = featuredPlayer && featuredPlayer.querySelector(".player-video");
+
+    if (featuredVideoObserver) {
+      featuredVideoObserver.disconnect();
+      featuredVideoObserver = null;
+    }
+
+    if (!video) {
+      return;
+    }
+
+    video.pause();
+    video.removeAttribute("src");
+    video.querySelectorAll("source").forEach(function (source) {
+      source.removeAttribute("src");
+    });
+    video.load();
   }
 
   function updateSelectorState() {

@@ -973,6 +973,10 @@ main {
   transition: opacity 280ms ease, transform 320ms ease;
 }
 
+.player-video.is-disabled {
+  display: none;
+}
+
 .player-video.is-ready {
   opacity: 1;
 }
