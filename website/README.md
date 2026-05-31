@@ -19,6 +19,15 @@ http://127.0.0.1:8123
 
 The service builds a static Nginx image from the multi-stage `Dockerfile`. Re-run with `--build` after changing site files.
 
+## Deployment
+
+GitHub Actions deploys only this `website/` directory to GitHub Pages on pushes to `main`.
+The `CNAME` file configures the custom domain:
+
+```text
+ppip.online
+```
+
 ## Local Access
 
 The Compose ports bind to `127.0.0.1`, so the site is only exposed on this machine.
