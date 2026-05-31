@@ -1,6 +1,6 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { dirname, extname, join, relative } from "node:path";
+import { basename, dirname, extname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const rootDir = dirname(fileURLToPath(import.meta.url)).replace(/\/scripts$/, "");
@@ -168,6 +168,63 @@ function optimizeImages() {
   return rewrites;
 }
 
+function optimizeGroupAvatarThumbnails() {
+  if (!hasCommand("cwebp")) {
+    failOrWarn("cwebp is required to optimize group avatar thumbnails");
+    return 0;
+  }
+
+  const indexFile = join(outputDir, "index.html");
+
+  if (!existsSync(indexFile)) {
+    return 0;
+  }
+
+  const thumbDir = join(outputDir, "assets", "player-promos", "thumbs");
+  let content = readFileSync(indexFile, "utf8");
+  let count = 0;
+
+  content = content.replace(
+    /<img src="(\.\/assets\/player-promos\/([^"]+))" alt="" class="group-player-thumb">/g,
+    function (match, sourceRef, fileName) {
+      const ext = extname(fileName).toLowerCase();
+
+      if (!imageExtensions.has(ext)) {
+        return match;
+      }
+
+      const sourceFile = join(outputDir, sourceRef.replace(/^\.\//, ""));
+
+      if (!existsSync(sourceFile)) {
+        failOrWarn(`missing group avatar source ${sourceRef}`);
+        return match;
+      }
+
+      mkdirSync(thumbDir, { recursive: true });
+
+      const thumbName = `${basename(fileName, ext)}-thumb.webp`;
+      const thumbFile = join(thumbDir, thumbName);
+      const result = spawnSync(
+        "cwebp",
+        ["-quiet", "-mt", "-m", "6", "-q", "74", "-resize", "144", "216", sourceFile, "-o", thumbFile],
+        { encoding: "utf8" }
+      );
+
+      if (result.status !== 0 || !existsSync(thumbFile)) {
+        failOrWarn(`failed to optimize group avatar ${sourceRef}`);
+        rmSync(thumbFile, { force: true });
+        return match;
+      }
+
+      count += 1;
+      return match.replace(sourceRef, `./assets/player-promos/thumbs/${thumbName}`);
+    }
+  );
+
+  writeFileSync(indexFile, content);
+  return count;
+}
+
 function optimizeVideos() {
   if (skipVideo) {
     return { count: 0, rewrites: [] };
@@ -256,6 +313,7 @@ for (const dir of deployDirs) {
 }
 
 const initialSize = dirSize(outputDir);
+const avatarThumbs = optimizeGroupAvatarThumbnails();
 const imageRewrites = optimizeImages();
 rewriteReferences(imageRewrites);
 const optimizedVideos = optimizeVideos();
@@ -263,6 +321,7 @@ rewriteReferences(optimizedVideos.rewrites);
 const finalSize = dirSize(outputDir);
 
 console.log(`Built ${relative(rootDir, outputDir)}`);
+console.log(`Group avatar thumbnails: ${avatarThumbs}`);
 console.log(`Images converted: ${imageRewrites.length}`);
 console.log(`Videos optimized: ${optimizedVideos.count}`);
 console.log(`Size: ${formatBytes(initialSize)} -> ${formatBytes(finalSize)}`);

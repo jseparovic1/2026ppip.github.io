@@ -181,6 +181,90 @@ body::before {
   animation: scan 12s linear infinite;
 }
 
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-orb {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.hero-orb-gold {
+  width: 46vw;
+  height: 46vw;
+  max-width: 720px;
+  max-height: 720px;
+  top: -10%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(214, 160, 79, 0.62), rgba(214, 160, 79, 0) 68%);
+  animation: orbDriftA 22s ease-in-out infinite alternate;
+}
+
+.hero-orb-ice {
+  width: 38vw;
+  height: 38vw;
+  max-width: 620px;
+  max-height: 620px;
+  bottom: -14%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(204, 230, 226, 0.45), rgba(204, 230, 226, 0) 70%);
+  animation: orbDriftB 26s ease-in-out infinite alternate;
+}
+
+.hero-orb-deep {
+  width: 32vw;
+  height: 32vw;
+  max-width: 520px;
+  max-height: 520px;
+  top: 32%;
+  left: 38%;
+  opacity: 0.42;
+  background: radial-gradient(circle, rgba(95, 158, 217, 0.4), rgba(95, 158, 217, 0) 72%);
+  animation: orbDriftC 30s ease-in-out infinite alternate;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(rgba(204, 230, 226, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(204, 230, 226, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+  animation: gridDrift 40s linear infinite;
+  pointer-events: none;
+}
+
+.hero-beam {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  right: -10%;
+  height: 60%;
+  background: conic-gradient(
+    from 200deg at 50% 50%,
+    transparent 0deg,
+    rgba(214, 160, 79, 0.12) 60deg,
+    transparent 120deg,
+    rgba(204, 230, 226, 0.08) 200deg,
+    transparent 280deg
+  );
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: beamSpin 60s linear infinite;
+  pointer-events: none;
+}
+
 .hero-content {
   max-width: 1240px;
   width: 100%;
@@ -331,6 +415,52 @@ main {
   font-size: 0.72rem;
 }
 
+.eyebrow-split {
+  gap: 10px;
+  padding: 8px 14px;
+  border-color: rgba(214, 160, 79, 0.32);
+  background:
+    linear-gradient(180deg, rgba(214, 160, 79, 0.08), rgba(5, 13, 25, 0.7)),
+    rgba(5, 13, 25, 0.58);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.eyebrow-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff5a5f;
+  box-shadow: 0 0 0 0 rgba(255, 90, 95, 0.6);
+  animation: eyebrowPulse 2.4s ease-out infinite;
+}
+
+.eyebrow-sep {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(214, 160, 79, 0.5);
+}
+
+.hero-kicker-mark {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  position: relative;
+  top: -3px;
+}
+
+@keyframes eyebrowPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 90, 95, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(255, 90, 95, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 90, 95, 0); }
+}
+
 .hero-title-wrap {
   max-width: 900px;
   position: relative;
@@ -343,9 +473,22 @@ main {
   left: 0;
   top: 6px;
   bottom: 8px;
-  width: 4px;
-  background: linear-gradient(180deg, var(--ice), var(--gold));
-  box-shadow: 0 0 24px rgba(214, 160, 79, 0.34);
+  width: 3px;
+  background:
+    linear-gradient(180deg, transparent 0%, var(--ice) 14%, var(--gold) 64%, transparent 100%),
+    linear-gradient(180deg, rgba(214, 160, 79, 0.25), rgba(214, 160, 79, 0.25));
+  background-size: 100% 220%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 -120%, 0 0;
+  box-shadow:
+    0 0 16px rgba(214, 160, 79, 0.36),
+    0 0 32px rgba(204, 230, 226, 0.14);
+  animation: heroBarFlow 6s ease-in-out infinite;
+}
+
+@keyframes heroBarFlow {
+  0%, 100% { background-position: 0 -120%, 0 0; }
+  50% { background-position: 0 120%, 0 0; }
 }
 
 .hero-kicker {
@@ -405,6 +548,8 @@ h1 {
 }
 
 .hero-manifesto {
+  position: relative;
+  overflow: hidden;
   width: fit-content;
   max-width: min(100%, 760px);
   margin: 2px 0 0;
@@ -419,6 +564,27 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
+}
+
+.hero-manifesto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  animation: manifestoShine 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes manifestoShine {
+  0%, 70% { transform: translateX(-100%); }
+  85% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
 }
 
 .hero-manifesto::after {
@@ -1309,6 +1475,70 @@ main {
   }
   to {
     transform: translateY(10%);
+  }
+}
+
+@keyframes orbDriftA {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-6%, 8%, 0) scale(1.1); }
+}
+
+@keyframes orbDriftB {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(8%, -6%, 0) scale(1.12); }
+}
+
+@keyframes orbDriftC {
+  0% { transform: translate3d(0, 0, 0) scale(0.95); opacity: 0.32; }
+  50% { opacity: 0.5; }
+  100% { transform: translate3d(-4%, -10%, 0) scale(1.08); opacity: 0.38; }
+}
+
+@keyframes gridDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 64px 64px, 64px 64px; }
+}
+
+@keyframes beamSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heroRise {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.hero-kicker,
+.hero-edition-mark,
+.hero-manifesto,
+.hero-subtitle,
+.eyebrow-row {
+  animation: heroRise 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.eyebrow-row { animation-delay: 60ms; }
+.hero-kicker { animation-delay: 160ms; }
+.hero-edition-mark { animation-delay: 260ms; }
+.hero-manifesto { animation-delay: 420ms; }
+.hero-subtitle { animation-delay: 540ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb,
+  .hero-grid,
+  .hero-beam,
+  .hero-noise,
+  .eyebrow-dot,
+  .hero-title-wrap::before,
+  .hero-manifesto::before {
+    animation: none;
+  }
+  .hero-kicker,
+  .hero-edition-mark,
+  .hero-manifesto,
+  .hero-subtitle,
+  .eyebrow-row {
+    animation: none;
   }
 }
 

@@ -64,7 +64,7 @@
     {
       name: "Vanja Lopušinsky",
       nickname: "Vanja",
-      image: "./assets/player-promos/ppip_lopusinsky_vanja_avatar_v2.png",
+      image: "./assets/player-promos/ppip_lopusinsky_vanja_avatar_v1.png",
       imageScale: "0.9",
       weapon: "Presretanje",
       weakness: "Direktan duel",
@@ -84,7 +84,7 @@
     {
       name: "Marko Martinović",
       nickname: "Markan",
-      image: "./assets/player-promos/ppip_martinovic_marko_avatar_v2.png",
+      image: "./assets/player-promos/ppip_martinovic_marko_avatar_v1.png",
       imageScale: "0.9",
       weapon: "Kretanje",
       weakness: "Stajanje u mjestu",
@@ -92,7 +92,7 @@
       accent: "#f77f00",
     },
     {
-      name: "Borna Mesin",
+      name: "Borna Mešin",
       nickname: "Mešo",
       image: "./assets/player-promos/ppip_mesin_borna_avatar_v1.png",
       imageScale: "0.9",
@@ -144,7 +144,7 @@
     {
       name: "Mario Sočo",
       nickname: "Kapetan",
-      image: "./assets/player-promos/ppip_soco_mario_avatar_v4.png",
+      image: "./assets/player-promos/ppip_soco_mario_avatar_v2.png",
       imageScale: "0.9",
       weapon: "Skok",
       weakness: "Mirni poeni",
