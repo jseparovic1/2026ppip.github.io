@@ -21,11 +21,25 @@ The service builds a static Nginx image from the multi-stage `Dockerfile`. Re-ru
 
 ## Deployment
 
-GitHub Actions deploys only this `website/` directory to GitHub Pages on pushes to `main`.
+GitHub Actions builds an optimized `dist/website/` artifact from this `website/` directory and deploys that artifact to GitHub Pages on pushes to `main`.
 The `CNAME` file configures the custom domain:
 
 ```text
 ppip.online
+```
+
+The build keeps source media unchanged, strips dotfiles from deployable assets, converts deploy images to WebP, and recompresses deploy videos with `ffmpeg`.
+
+Run the same build locally:
+
+```bash
+npm run build
+```
+
+If `ffmpeg` is not installed and you only want to test the image pipeline:
+
+```bash
+npm run build:images
 ```
 
 ## Local Access

@@ -28,13 +28,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install media optimizers
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg webp
+
+      - name: Build optimized website
+        run: npm run build
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: website
+          path: dist/website
 
       - name: Deploy to GitHub Pages
         id: deployment

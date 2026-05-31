@@ -144,7 +144,7 @@
     {
       name: "Mario Sočo",
       nickname: "Kapetan",
-      image: "./assets/player-promos/ppip_soco_mario_avatar_v1.png",
+      image: "./assets/player-promos/ppip_soco_mario_avatar_v3.png",
       imageScale: "0.9",
       weapon: "Skok",
       weakness: "Mirni poeni",

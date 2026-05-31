@@ -1,0 +1,10 @@
+{
+  "name": "ppip-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-website.mjs --strict",
+    "build:local": "node scripts/build-website.mjs",
+    "build:images": "node scripts/build-website.mjs --skip-video"
+  }
+}
