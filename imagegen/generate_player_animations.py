@@ -13,7 +13,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "imagegen" / "avatar_promos_ready.jsonl"
+MANIFEST = ROOT / "imagegen" / "avatar_promos.json"
 PLAYER_DATA = ROOT / "website" / "player-data.js"
 OUTPUT_DIR = ROOT / "website" / "assets" / "player-avatar-animations"
 ANIMATION_DATA = ROOT / "website" / "player-animations.js"
@@ -55,20 +55,23 @@ def read_rows(limit: int | None, slug: str | None = None) -> list[dict[str, str]
             rows = [row for row in rows if row.get("slug") == slug]
         return rows[:limit] if limit is not None else rows
 
-    rows: list[dict[str, str]] = []
-    for line in MANIFEST.read_text(encoding="utf-8").splitlines():
-        if not line.strip():
-            continue
-        row = json.loads(line)
+    rows: list[dict[str, str]] = json.loads(MANIFEST.read_text(encoding="utf-8"))["players"]
+    filtered_rows: list[dict[str, str]] = []
+    for row in rows:
         if slug is not None:
-            image_path = ROOT / row["image"]
-            row_slug = player_slug_from_prompt(row["prompt"], image_path.stem.replace("_", "-"))
+            image = row.get("image") or row.get("images", [""])[0]
+            prompt = row.get("prompt") or f" for {row.get('name', '')}, nickname "
+            image_path = ROOT / image
+            row_slug = row.get("slug") or player_slug_from_prompt(
+                prompt,
+                image_path.stem.replace("_", "-"),
+            )
             if row_slug != slug:
                 continue
-        rows.append(row)
-        if limit is not None and len(rows) >= limit:
+        filtered_rows.append(row)
+        if limit is not None and len(filtered_rows) >= limit:
             break
-    return rows
+    return filtered_rows
 
 
 def read_player_data_rows() -> list[dict[str, str]]:
@@ -161,8 +164,10 @@ def load_existing_animation_data() -> dict[str, str]:
 
 
 def run_job(replicate: Any, row: dict[str, str], args: argparse.Namespace) -> tuple[str, str]:
-    image_path = ROOT / row["image"]
-    player_slug = row.get("slug") or player_slug_from_prompt(row["prompt"], image_path.stem.replace("_", "-"))
+    image = row.get("image") or row.get("images", [""])[0]
+    image_path = ROOT / image
+    prompt = row.get("prompt") or f"Use the current esports avatar as the start image for {row.get('name', image_path.stem)}."
+    player_slug = row.get("slug") or player_slug_from_prompt(prompt, image_path.stem.replace("_", "-"))
     output_path = OUTPUT_DIR / f"{player_slug}.mp4"
 
     if output_path.exists() and not args.force:

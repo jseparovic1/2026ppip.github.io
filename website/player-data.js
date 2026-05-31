@@ -84,7 +84,8 @@
     {
       name: "Marko Martinović",
       nickname: "Markan",
-      image: "",
+      image: "./assets/player-promos/ppip_martinovic_marko_avatar_v1.png",
+      imageScale: "0.9",
       weapon: "Kretanje",
       weakness: "Stajanje u mjestu",
       quote: "A dragi",
@@ -143,7 +144,7 @@
     {
       name: "Mario Sočo",
       nickname: "Kapetan",
-      image: "./assets/player-promos/ppip_soco_mario_avatar_v2.png",
+      image: "./assets/player-promos/ppip_soco_mario_avatar_v1.png",
       imageScale: "0.9",
       weapon: "Skok",
       weakness: "Mirni poeni",

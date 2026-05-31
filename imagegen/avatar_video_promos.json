@@ -1,0 +1,122 @@
+{
+  "defaults": {
+    "quality": "medium",
+    "size": "1024x1536",
+    "output_format": "png",
+    "output_dir": "website/assets/player-promos"
+  },
+  "players": [
+    {
+      "slug": "zeljko-bilic",
+      "name": "Željko Bilić",
+      "image": "players/bilic_zeljko/zele.jpeg",
+      "out": "ppip_bilic_zeljko_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Željko Bilić, nickname Zele. He is a calm commander and tempo setter with controlled pressure and composed authority. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with warm gold energy accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "marko-dragunic",
+      "name": "Marko Dragunić",
+      "image": "players/dragunic_marko/krsni.jpeg",
+      "out": "ppip_dragunic_marko_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Marko Dragunić, nickname Dragun. He is an aggressive baseline hunter with relentless heavy-hitting energy. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with fiery orange-red energy accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "mateo-gugic",
+      "name": "Mateo Gugić",
+      "image": "players/gugic_mateo/gugic_1.jpeg",
+      "out": "ppip_gugic_mateo_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Mateo Gugić, nickname Guga. He is a reactive counter-puncher, sharp, resilient, and always one step ahead. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with electric cyan accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "filip-ivis",
+      "name": "Filip Ivis",
+      "image": "players/ivis_filip/ivis_1.jpeg",
+      "out": "ppip_ivis_filip_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Filip Ivis, nickname Ivi. He is a clinical closer with icy, precise, ruthless finishing energy. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with neon lime accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "antonio-jonjic",
+      "name": "Antonio Jonjić",
+      "image": "players/jonjic_antonio/jonjic.png",
+      "out": "ppip_jonjic_antonio_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Antonio Jonjić, nickname Joni. He is a chaos creator with unpredictable, explosive, wild-card swagger. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with hot pink accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "borna-katavic",
+      "name": "Borna Katavić",
+      "image": "players/katavic_borna/katavic.jpeg",
+      "out": "ppip_katavic_borna_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Borna Katavić, nickname Boki. He is a calm defender, stoic, disciplined, and unshakeable. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with cool teal accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "vanja-lopusinsky",
+      "name": "Vanja Lopusinsky",
+      "image": "players/lopusinsky_vanja/vanja.jpeg",
+      "out": "ppip_lopusinsky_vanja_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Vanja Lopusinsky, nickname Lopo. He is a sneaky interceptor, stealthy, clever, timing-based, and deceptive. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with amber-gold accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "ivan-martinac",
+      "name": "Ivan Martinac",
+      "image": "players/martinac_ivan/martinac.jpg",
+      "out": "ppip_martinac_ivan_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Ivan Martinac, nickname Marti. He is a reliable grinder, durable, hardworking, and tough under pressure. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with steel-blue accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "marko-martinovic",
+      "name": "Marko Martinović",
+      "image": "players/martinovic_marko/martinovic_1.jpeg",
+      "out": "ppip_martinovic_marko_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Marko Martinović, nickname Markan. He is a transition striker with fast, dynamic, forward-driving momentum. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with saturated orange accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "borna-mesin",
+      "name": "Borna Mesin",
+      "image": "players/mesin_borna/meso.jpeg",
+      "out": "ppip_mesin_borna_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Borna Mesin, nickname Meso. He is a smash specialist, airborne, powerful, and a destructive finisher. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with magenta-violet accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "franko-miocic",
+      "name": "Franko Miočić",
+      "image": "players/miocic_franko/franko.jpeg",
+      "out": "ppip_miocic_franko_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Franko Miočić, nickname Frank. He is a tactical pattern player with cerebral, methodical control. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with emerald accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "ian-miocic",
+      "name": "Ian Miočić",
+      "image": "players/miocic_ian/ian.jpeg",
+      "out": "ppip_miocic_ian_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Ian Miočić, nickname Ijo. He is a quick-twitch attacker with rapid, sharp intensity. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with bright aqua accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "antonio-rajkovic",
+      "name": "Antonio Rajković",
+      "image": "players/rajković_antonio/rajkovic.jpeg",
+      "out": "ppip_rajkovic_antonio_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Antonio Rajković, nickname Raja. He is a front-court boss with dominant net-control authority. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with fuchsia accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "jurica-separovic",
+      "name": "Jurica Šeparović",
+      "image": "players/separovic_jurica/separovic.jpeg",
+      "out": "ppip_separovic_jurica_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Jurica Šeparović, nickname Sep. He is a placement specialist with artistic, angled, elegant control. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with moss-green accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "mario-soco",
+      "name": "Mario Soco",
+      "image": "players/soco_mario/soco_1.jpeg",
+      "out": "ppip_soco_mario_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Mario Soco, nickname Soko. He is an aerial finisher, soaring, explosive, and decisive at the net. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with sunset-orange accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    },
+    {
+      "slug": "ivan-tomic",
+      "name": "Ivan Tomić",
+      "image": "players/tomic_ivan/tomic_1.jpeg",
+      "out": "ppip_tomic_ivan_promo_v1.png",
+      "prompt": "Use the attached player photo as the identity reference. Create a vertical esports-style padel club promo poster for Ivan Tomić, nickname Toma. He is a closing veteran with experienced, composed, final-point killer energy. Keep his facial likeness strong and realistic. Add subtle padel cues, a premium arena atmosphere, cinematic rim light, dramatic contrast, crisp editorial finish, shallow depth of field, bold composition, and clean negative space for typography. Dark vivid palette with slate-blue accents. No cartoon look, no distorted hands, no extra limbs, no watermark, no generic sports stock vibe."
+    }
+  ]
+}
