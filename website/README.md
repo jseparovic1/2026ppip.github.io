@@ -30,6 +30,9 @@ ppip.online
 
 The build keeps source media unchanged, strips dotfiles from deployable assets, converts deploy images to WebP, and recompresses deploy videos with `ffmpeg`.
 
+Player animation source files should also be optimized before committing. See
+`imagegen/README.md` for the player video optimization workflow.
+
 Run the same build locally:
 
 ```bash

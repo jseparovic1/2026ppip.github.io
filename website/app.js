@@ -64,13 +64,8 @@
 
   function canAutoLoadFeaturedVideo() {
     const connection = getConnectionInfo();
-    const effectiveType = connection && connection.effectiveType ? connection.effectiveType : "";
 
-    return !(
-      (connection && connection.saveData) ||
-      effectiveType === "slow-2g" ||
-      effectiveType === "2g"
-    );
+    return !(connection && connection.saveData);
   }
 
   function shouldLazyLoadFeaturedVideo() {

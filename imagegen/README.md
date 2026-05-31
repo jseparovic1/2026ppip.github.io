@@ -61,6 +61,39 @@ The script updates:
 
 `website/player-animations.js`
 
+### Website video optimization
+
+Always optimize generated player videos before deployment. The raw Kling exports
+are much larger than the website needs and can fail to autoplay smoothly on
+mobile browsers.
+
+Target format:
+
+- MP4 / H.264
+- baseline profile, level 3.1
+- `yuv420p`
+- 24 fps
+- no audio
+- max width 540 px
+- `+faststart` for progressive playback
+
+Run the optimizer after generating or replacing any file in
+`website/assets/player-avatar-animations/`:
+
+```bash
+docker run --rm -v "$PWD:/work" -w /work --entrypoint sh jrottenberg/ffmpeg:6.1-alpine scripts/optimize-player-videos.sh
+```
+
+If `ffmpeg` is installed locally, the same script can be run directly:
+
+```bash
+sh scripts/optimize-player-videos.sh
+```
+
+The optimizer rewrites the existing `.mp4` files in place, so only run it after
+you are happy with the generated motion. As a sanity check, player videos should
+usually end up in the low hundreds of KB each rather than several MB.
+
 ### Docker Compose
 
 Store secrets in the project root `.env` file:
