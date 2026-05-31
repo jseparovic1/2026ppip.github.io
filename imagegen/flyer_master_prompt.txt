@@ -1,0 +1,15 @@
+Use case: stylized-concept
+Asset type: tournament promotion flyer
+Primary request: Create a premium vertical tournament flyer for PPiP Spring Edition 2026.
+Input images:
+Image 1: rough composition guide showing the full 16-player roster layout; keep the idea of a full-team layered roster composition but rebuild it completely with much higher quality.
+Image 2: style reference from the older PPiP flyer; use its sense of polish, balance, and event-poster confidence as inspiration, not as something to copy literally.
+Scene/backdrop: Padel Club Dalmatia in Split as a dramatic atmospheric venue backdrop, with subtle court geometry, architectural hints, floodlights, haze, and premium event energy.
+Subject: all 16 players presented as one elite roster in a powerful esports-meets-padel composition.
+Style/medium: modern high-end sports poster, esports campaign key art, realistic and editorial, not collage-like, not cheesy.
+Composition/framing: vertical poster, one dominant central cluster with all 16 players layered cleanly around it, readable hierarchy, strong top title zone, event info integrated cleanly, no awkward copy-paste cutout look, balanced negative space.
+Lighting/mood: cinematic arena lighting, rim light, controlled glow, deep contrast, premium and intense.
+Color palette: dark navy, carbon black, cyan energy, selective gold accents, subtle warm highlights.
+Text (verbatim): "PPiP Spring Edition", "Split", "Padel Club Dalmatia", "13. lipnja 2026."
+Constraints: include all players; make them feel intentionally arranged and stylistically unified; use the old flyer only as an inspiration reference; preserve a premium believable event-poster finish; make the design feel current and high taste; include subtle PPiP branding treatment; no missing players; no duplicated faces; no malformed limbs; no messy collage edges.
+Avoid: cheap montage look, random stock-sports aesthetic, ugly text rendering, muddy faces, distorted hands, duplicated bodies, watermark, generic template poster.
