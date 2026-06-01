@@ -173,7 +173,7 @@
       imageScale: "0.92",
       odds: "22,00",
       weapon: "Priča se da je pobijedio zid 1v1",
-      weakness: "Napadački opasan kao Švicarska vojska",
+      weakness: "Napada samo ako nema drugog izbora",
       quote: "Ala čekaju me doma lazanje u šaheru...",
       accent: "#577590",
     }
