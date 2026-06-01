@@ -1,4 +1,21 @@
 (function () {
+  function setupHeroNavReveal() {
+    const hero = document.querySelector(".hero");
+    const deferredNav = document.querySelector(".route-nav-after-hero");
+
+    if (!hero || !deferredNav) {
+      return;
+    }
+
+    function updateNavVisibility() {
+      document.body.classList.toggle("is-past-hero", hero.getBoundingClientRect().bottom <= 0);
+    }
+
+    updateNavVisibility();
+    window.addEventListener("scroll", updateNavVisibility, { passive: true });
+    window.addEventListener("resize", updateNavVisibility);
+  }
+
   function loadPlayerData(callback) {
     const existingScript = document.querySelector('script[src$="player-data.js"]');
     const script = existingScript || document.createElement("script");
@@ -459,7 +476,6 @@
 
   renderFeaturedPlayer(playersWithSlugs[selectedIndex], selectedIndex);
   buildSelector();
-  updateUrlForPlayer(playersWithSlugs[selectedIndex]);
   observer.observe(featuredPlayer);
 
   if (shouldScrollToInitialPlayer) {
@@ -467,6 +483,8 @@
   }
 
   }
+
+  setupHeroNavReveal();
 
   if (Array.isArray(window.PPIP_PLAYERS)) {
     startApp();

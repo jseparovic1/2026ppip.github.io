@@ -84,6 +84,21 @@ body::before {
   backdrop-filter: blur(18px);
 }
 
+.route-nav-after-hero {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -18px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+body.is-past-hero .route-nav-after-hero {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%);
+}
+
 .route-nav-links a {
   display: inline-flex;
   align-items: center;
@@ -176,10 +191,12 @@ body::before {
 }
 
 .hero {
+  --hero-pad-block: clamp(24px, 4vw, 56px);
+  --hero-nav-clearance: 0px;
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
-  padding: clamp(24px, 4vw, 56px) 32px;
+  padding: 0 32px;
   display: grid;
   align-items: center;
   isolation: isolate;
@@ -333,7 +350,6 @@ body::before {
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 0;
   position: relative;
   z-index: 1;
 }
@@ -440,27 +456,38 @@ main {
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 72px;
+  min-height: calc(100svh - var(--hero-nav-clearance));
+  padding-block: var(--hero-pad-block);
+  display: grid;
+  place-content: center;
+  justify-items: center;
 }
 
 .hero-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 30px;
-  align-items: end;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  min-height: 0;
 }
 
 .hero-copy-block {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: min(100%, 980px);
   padding-bottom: 6px;
+  text-align: center;
 }
 
 .eyebrow-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 28px;
 }
@@ -513,6 +540,7 @@ main {
   width: 28px;
   height: 1px;
   margin-right: 12px;
+  margin-left: 0;
   vertical-align: middle;
   background: linear-gradient(90deg, var(--gold), transparent);
   position: relative;
@@ -528,26 +556,14 @@ main {
 .hero-title-wrap {
   max-width: 900px;
   position: relative;
-  padding-left: 22px;
+  display: grid;
+  justify-items: center;
+  padding-left: 0;
+  text-align: center;
 }
 
 .hero-title-wrap::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  bottom: 8px;
-  width: 3px;
-  background:
-    linear-gradient(180deg, transparent 0%, var(--ice) 14%, var(--gold) 64%, transparent 100%),
-    linear-gradient(180deg, rgba(214, 160, 79, 0.25), rgba(214, 160, 79, 0.25));
-  background-size: 100% 220%, 100% 100%;
-  background-repeat: no-repeat;
-  background-position: 0 -120%, 0 0;
-  box-shadow:
-    0 0 16px rgba(214, 160, 79, 0.36),
-    0 0 32px rgba(204, 230, 226, 0.14);
-  animation: heroBarFlow 6s ease-in-out infinite;
+  display: none;
 }
 
 @keyframes heroBarFlow {
@@ -582,6 +598,7 @@ h1 {
 
 .hero-edition-mark {
   display: grid;
+  justify-items: center;
   gap: clamp(2px, 0.8vw, 8px);
   max-width: 11ch;
 }
@@ -616,7 +633,7 @@ h1 {
   overflow: hidden;
   width: fit-content;
   max-width: min(100%, 760px);
-  margin: 2px 0 0;
+  margin: 2px auto 0;
   padding: 11px 14px 12px;
   border: 1px solid rgba(214, 160, 79, 0.28);
   background:
@@ -652,18 +669,12 @@ h1 {
 }
 
 .hero-manifesto::after {
-  content: "";
-  display: inline-block;
-  width: 42px;
-  height: 1px;
-  margin-left: 12px;
-  vertical-align: middle;
-  background: linear-gradient(90deg, var(--gold), transparent);
+  display: none;
 }
 
 .hero-subtitle {
   max-width: 680px;
-  margin: 20px 0 0;
+  margin: 20px auto 0;
   font-size: clamp(1rem, 2.6vw, 1.22rem);
   line-height: 1.6;
   color: #d9e4e5;
@@ -881,14 +892,14 @@ main {
 
 .event-info-card-location {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(92px, 12vw, 140px);
+  grid-template-columns: clamp(92px, 12vw, 140px) minmax(0, 1fr);
   align-items: center;
   gap: clamp(18px, 3vw, 30px);
 }
 
 .event-info-details {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(260px, 1fr) minmax(170px, auto);
   gap: clamp(18px, 3vw, 34px);
   align-items: center;
   min-width: 0;
@@ -899,7 +910,7 @@ main {
 }
 
 .event-location-logo {
-  justify-self: end;
+  justify-self: start;
   width: clamp(84px, 11vw, 128px);
   aspect-ratio: 1;
   object-fit: contain;
@@ -909,12 +920,13 @@ main {
 }
 
 .event-info-card strong {
-  font-size: clamp(2.45rem, 5.2vw, 4.1rem);
-  overflow-wrap: anywhere;
+  font-size: clamp(2.15rem, 4.2vw, 3.35rem);
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 article.event-info-card-location strong {
-  font-size: clamp(2.1rem, 4.4vw, 3.35rem);
+  font-size: clamp(2rem, 3.7vw, 3rem);
 }
 
 .event-info-actions {
@@ -2018,17 +2030,11 @@ body.odds-page {
   .hero {
     min-height: 100vh;
     min-height: 100svh;
-    padding-top: 22px;
-    padding-bottom: 112px;
-    align-items: center;
-  }
-
-  .hero-content {
-    padding-top: 0;
+    --hero-pad-block: 22px;
+    --hero-nav-clearance: 78px;
   }
 
   .hero-layout {
-    min-height: calc(100svh - 134px);
     gap: 20px;
     justify-items: center;
   }
@@ -2040,6 +2046,14 @@ body.odds-page {
     gap: 6px;
     width: min(340px, calc(100% - 20px));
     padding: 7px;
+  }
+
+  .route-nav-after-hero {
+    transform: translate(-50%, 18px);
+  }
+
+  body.is-past-hero .route-nav-after-hero {
+    transform: translateX(-50%);
   }
 
   .route-nav-links {
@@ -2066,7 +2080,6 @@ body.odds-page {
     width: 100%;
     max-width: 34rem;
     text-align: center;
-    transform: translateY(-32px);
   }
 
   .hero-media {
@@ -2290,12 +2303,6 @@ body.odds-page {
   }
 }
 
-@media (max-width: 640px) and (min-height: 900px) {
-  .hero-copy-block {
-    transform: translateY(-112px);
-  }
-}
-
 @media (max-width: 1180px) {
   .hero {
     min-height: 100vh;
@@ -2314,15 +2321,6 @@ body.odds-page {
 }
 
 @media (max-width: 640px) {
-  .hero {
-    padding-top: 22px;
-    padding-bottom: 22px;
-  }
-
-  .hero-content {
-    padding-top: 0;
-  }
-
   .hero-title-wrap,
   .hero-title-wrap-reset {
     gap: 14px;
@@ -2359,12 +2357,12 @@ body.odds-page {
   .event-info-details {
     grid-template-columns: 1fr;
     justify-items: center;
+    width: 100%;
   }
 
   .event-location-logo {
     justify-self: center;
     width: 96px;
-    order: -1;
   }
 
 }
