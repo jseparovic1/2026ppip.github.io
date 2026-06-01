@@ -12,6 +12,7 @@
     "ivan-tomic": "./assets/player-avatar-animations/ivan-tomic.mp4",
     "mario-soco": "./assets/player-avatar-animations/mario-soco.mp4",
     "marko-dragunic": "./assets/player-avatar-animations/marko-dragunic.mp4",
+    "marko-martinovic": "./assets/player-avatar-animations/marko-martinovic.mp4",
     "mateo-gugic": "./assets/player-avatar-animations/mateo-gugic.mp4",
     "vanja-lopusinsky": "./assets/player-avatar-animations/vanja-lopusinsky.mp4",
     "zeljko-bilic": "./assets/player-avatar-animations/bilic_zeljko_1.mp4"

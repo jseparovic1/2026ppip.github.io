@@ -71,10 +71,9 @@ body::before {
   top: 18px;
   left: 50%;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr;
   align-items: center;
-  gap: 10px;
-  width: min(560px, calc(100% - 32px));
+  width: min(320px, calc(100% - 32px));
   padding: 8px;
   border: 1px solid rgba(204, 230, 226, 0.16);
   background:
@@ -85,7 +84,6 @@ body::before {
   backdrop-filter: blur(18px);
 }
 
-.route-nav-brand,
 .route-nav-links a {
   display: inline-flex;
   align-items: center;
@@ -94,16 +92,6 @@ body::before {
   color: #edf7ff;
   text-decoration: none;
   text-transform: uppercase;
-}
-
-.route-nav-brand {
-  min-width: 86px;
-  padding: 0 14px;
-  border: 1px solid rgba(214, 160, 79, 0.34);
-  color: #f3c66f;
-  font-family: "Bebas Neue", Impact, sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.08em;
 }
 
 .route-nav-links {
@@ -202,9 +190,10 @@ body::before {
   inset: 0;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(3, 9, 20, 0.1) 0%, rgba(3, 9, 20, 0.44) 46%, rgba(3, 9, 20, 0.96) 100%),
-    linear-gradient(112deg, rgba(214, 160, 79, 0.18) 0%, transparent 34%, rgba(204, 230, 226, 0.12) 100%),
-    radial-gradient(ellipse at 50% 112%, rgba(214, 160, 79, 0.2), transparent 42%),
+    linear-gradient(180deg, rgba(3, 9, 20, 0.34) 0%, rgba(3, 9, 20, 0.58) 52%, rgba(3, 9, 20, 0.98) 100%),
+    linear-gradient(96deg, rgba(3, 9, 20, 0.78) 0%, rgba(3, 9, 20, 0.44) 48%, rgba(3, 9, 20, 0.74) 100%),
+    radial-gradient(ellipse at 50% 112%, rgba(214, 160, 79, 0.16), transparent 44%),
+    url("./assets/materials/arena.png") center 44% / min(100vw, 1180px) auto no-repeat,
     linear-gradient(145deg, #030914 0%, #07172a 48%, #0a2135 100%);
 }
 
@@ -217,8 +206,8 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(3, 9, 20, 0.08) 0%, rgba(3, 9, 20, 0.62) 68%, rgba(3, 9, 20, 0.96) 100%),
-    linear-gradient(118deg, transparent 34%, rgba(217, 162, 79, 0.12) 100%);
+    linear-gradient(180deg, rgba(3, 9, 20, 0.2) 0%, rgba(3, 9, 20, 0.58) 62%, rgba(3, 9, 20, 0.99) 100%),
+    linear-gradient(118deg, rgba(3, 9, 20, 0.42) 0%, rgba(3, 9, 20, 0.12) 42%, rgba(217, 162, 79, 0.14) 100%);
 }
 
 .hero-media::before {
@@ -236,7 +225,7 @@ body::before {
   border: 1px solid rgba(204, 230, 226, 0.16);
   border-left: 0;
   border-right: 0;
-  opacity: 0.62;
+  opacity: 0.16;
   filter: blur(0.2px);
 }
 
@@ -877,7 +866,7 @@ main {
 }
 
 .event-info-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 22px;
 }
 
@@ -890,8 +879,42 @@ main {
   border-color: rgba(204, 230, 226, 0.14);
 }
 
+.event-info-card-location {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(92px, 12vw, 140px);
+  align-items: center;
+  gap: clamp(18px, 3vw, 30px);
+}
+
+.event-info-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(18px, 3vw, 34px);
+  align-items: center;
+  min-width: 0;
+}
+
+.event-info-details > div {
+  min-width: 0;
+}
+
+.event-location-logo {
+  justify-self: end;
+  width: clamp(84px, 11vw, 128px);
+  aspect-ratio: 1;
+  object-fit: contain;
+  border: 1px solid rgba(204, 230, 226, 0.16);
+  background: rgba(0, 0, 0, 0.32);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+}
+
 .event-info-card strong {
   font-size: clamp(2.45rem, 5.2vw, 4.1rem);
+  overflow-wrap: anywhere;
+}
+
+article.event-info-card-location strong {
+  font-size: clamp(2.1rem, 4.4vw, 3.35rem);
 }
 
 .event-info-actions {
@@ -1996,7 +2019,8 @@ body.odds-page {
     min-height: 100vh;
     min-height: 100svh;
     padding-top: 22px;
-    padding-bottom: 22px;
+    padding-bottom: 112px;
+    align-items: center;
   }
 
   .hero-content {
@@ -2004,8 +2028,9 @@ body.odds-page {
   }
 
   .hero-layout {
-    min-height: calc(100svh - 56px);
+    min-height: calc(100svh - 134px);
     gap: 20px;
+    justify-items: center;
   }
 
   .route-nav {
@@ -2015,10 +2040,6 @@ body.odds-page {
     gap: 6px;
     width: min(340px, calc(100% - 20px));
     padding: 7px;
-  }
-
-  .route-nav-brand {
-    display: none;
   }
 
   .route-nav-links {
@@ -2032,6 +2053,69 @@ body.odds-page {
 
   .hero-title-wrap {
     padding-left: 0;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-title-wrap::before {
+    display: none;
+  }
+
+  .hero-copy-block {
+    align-items: center;
+    width: 100%;
+    max-width: 34rem;
+    text-align: center;
+    transform: translateY(-32px);
+  }
+
+  .hero-media {
+    background:
+      linear-gradient(180deg, rgba(3, 9, 20, 0.28) 0%, rgba(3, 9, 20, 0.52) 48%, rgba(3, 9, 20, 0.99) 100%),
+      linear-gradient(90deg, rgba(3, 9, 20, 0.62) 0%, rgba(3, 9, 20, 0.38) 50%, rgba(3, 9, 20, 0.62) 100%),
+      url("./assets/materials/arena.png") center 44% / auto 100% no-repeat,
+      linear-gradient(145deg, #030914 0%, #07172a 48%, #0a2135 100%);
+  }
+
+  .hero-media::before {
+    opacity: 0.08;
+  }
+
+  .eyebrow-row {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-kicker {
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.45;
+  }
+
+  .hero-edition-mark {
+    justify-items: center;
+    max-width: min(100%, 8.4ch);
+  }
+
+  .hero-season-word {
+    white-space: normal;
+  }
+
+  .hero-manifesto {
+    width: min(100%, 30rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-manifesto::after {
+    display: none;
+  }
+
+  .hero-subtitle {
+    max-width: 31rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-panel {
@@ -2206,6 +2290,12 @@ body.odds-page {
   }
 }
 
+@media (max-width: 640px) and (min-height: 900px) {
+  .hero-copy-block {
+    transform: translateY(-112px);
+  }
+}
+
 @media (max-width: 1180px) {
   .hero {
     min-height: 100vh;
@@ -2258,6 +2348,23 @@ body.odds-page {
 
   .event-info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .event-info-card-location {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .event-info-details {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .event-location-logo {
+    justify-self: center;
+    width: 96px;
+    order: -1;
   }
 
 }

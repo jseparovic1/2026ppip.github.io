@@ -105,6 +105,7 @@
       animation: player.animation || playerAnimations[slug] || null,
     });
   });
+  const shouldScrollToInitialPlayer = /^#(?:igrac|player)=.+$/.test(window.location.hash || "");
 
   function getDisplayedIndex() {
     return previewIndex === null ? selectedIndex : previewIndex;
@@ -317,6 +318,29 @@
     updateSelectorState();
   }
 
+  function scrollToPlayersSection(options) {
+    const playersSection = document.getElementById("players");
+    const target = playersSection || playerShowcase;
+    const behavior = options && options.behavior ? options.behavior : "smooth";
+
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ behavior: behavior, block: "start" });
+  }
+
+  function scheduleInitialPlayerScroll() {
+    const scroll = function () {
+      scrollToPlayersSection({ behavior: "auto" });
+    };
+
+    window.requestAnimationFrame(function () {
+      scroll();
+      window.setTimeout(scroll, 180);
+    });
+  }
+
   function restartAnimation(element, className, duration) {
     if (!element) {
       return;
@@ -395,7 +419,7 @@
     triggerSelectionAnimation(nextIndex);
     transitionToPlayer(nextIndex, { force: true });
     scrollSelectorToIndex(nextIndex);
-    playerShowcase.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToPlayersSection({ behavior: "smooth" });
     return true;
   }
 
@@ -437,6 +461,10 @@
   buildSelector();
   updateUrlForPlayer(playersWithSlugs[selectedIndex]);
   observer.observe(featuredPlayer);
+
+  if (shouldScrollToInitialPlayer) {
+    scheduleInitialPlayerScroll();
+  }
 
   }
 
