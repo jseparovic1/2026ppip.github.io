@@ -295,6 +295,24 @@
     playerPickerNext.setAttribute("aria-label", "Sljedeći igrač: " + playersWithSlugs[nextIndex].name);
   }
 
+  function hydrateGroupOdds() {
+    document.querySelectorAll(".group-player-link[data-player-slug]").forEach(function (link) {
+      const slug = link.getAttribute("data-player-slug");
+      const player = playersWithSlugs.find(function (rosterPlayer) {
+        return rosterPlayer.slug === slug;
+      });
+
+      if (!player || !player.odds || link.querySelector(".group-player-odds")) {
+        return;
+      }
+
+      const odds = document.createElement("span");
+      odds.className = "group-player-odds";
+      odds.textContent = player.odds;
+      link.appendChild(odds);
+    });
+  }
+
   function scrollSelectorToIndex(index) {
     updateSelectorState();
   }
@@ -388,6 +406,8 @@
   playerPickerNext.addEventListener("click", function () {
     selectPlayerByOffset(1);
   });
+
+  hydrateGroupOdds();
 
   document.querySelectorAll("[data-player-slug]").forEach(function (link) {
     link.addEventListener("click", function (event) {
