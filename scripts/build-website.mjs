@@ -10,6 +10,7 @@ const strict = process.argv.includes("--strict");
 const skipVideo = process.argv.includes("--skip-video");
 const imageExtensions = new Set([".png", ".jpg", ".jpeg"]);
 const videoExtensions = new Set([".mp4", ".mov"]);
+const minifyExtensions = new Set([".css", ".js"]);
 const rewriteExtensions = new Set([".html", ".css", ".js", ".json", ".txt", ".webmanifest"]);
 const keepOriginalImages = new Set([
   "assets/favicon.png",
@@ -99,6 +100,169 @@ function formatBytes(bytes) {
 
 function dirSize(dir) {
   return walkFiles(dir).reduce((total, file) => total + statSync(file).size, 0);
+}
+
+function stripJsComments(content) {
+  let output = "";
+  let state = "code";
+  let escaped = false;
+  let templateExpressionDepth = 0;
+
+  for (let index = 0; index < content.length; index += 1) {
+    const char = content[index];
+    const next = content[index + 1] || "";
+
+    if (state === "line-comment") {
+      if (char === "\n" || char === "\r") {
+        output += char;
+        state = "code";
+      }
+      continue;
+    }
+
+    if (state === "block-comment") {
+      if (char === "*" && next === "/") {
+        index += 1;
+        state = "code";
+      }
+      continue;
+    }
+
+    output += char;
+
+    if (state === "single-quote" || state === "double-quote") {
+      if (escaped) {
+        escaped = false;
+      } else if (char === "\\") {
+        escaped = true;
+      } else if ((state === "single-quote" && char === "'") || (state === "double-quote" && char === '"')) {
+        state = "code";
+      }
+      continue;
+    }
+
+    if (state === "template") {
+      if (escaped) {
+        escaped = false;
+      } else if (char === "\\") {
+        escaped = true;
+      } else if (char === "`" && templateExpressionDepth === 0) {
+        state = "code";
+      } else if (char === "$" && next === "{") {
+        templateExpressionDepth += 1;
+      } else if (char === "}" && templateExpressionDepth > 0) {
+        templateExpressionDepth -= 1;
+      }
+      continue;
+    }
+
+    if (char === "'") {
+      state = "single-quote";
+    } else if (char === '"') {
+      state = "double-quote";
+    } else if (char === "`") {
+      state = "template";
+      templateExpressionDepth = 0;
+    } else if (char === "/" && next === "/") {
+      output = output.slice(0, -1);
+      state = "line-comment";
+      index += 1;
+    } else if (char === "/" && next === "*") {
+      output = output.slice(0, -1);
+      state = "block-comment";
+      index += 1;
+    }
+  }
+
+  return output;
+}
+
+function minifyJs(content) {
+  return stripJsComments(content)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join("\n");
+}
+
+function stripCssComments(content) {
+  let output = "";
+  let state = "code";
+  let escaped = false;
+
+  for (let index = 0; index < content.length; index += 1) {
+    const char = content[index];
+    const next = content[index + 1] || "";
+
+    if (state === "comment") {
+      if (char === "*" && next === "/") {
+        index += 1;
+        state = "code";
+      }
+      continue;
+    }
+
+    output += char;
+
+    if (state === "single-quote" || state === "double-quote") {
+      if (escaped) {
+        escaped = false;
+      } else if (char === "\\") {
+        escaped = true;
+      } else if ((state === "single-quote" && char === "'") || (state === "double-quote" && char === '"')) {
+        state = "code";
+      }
+      continue;
+    }
+
+    if (char === "'") {
+      state = "single-quote";
+    } else if (char === '"') {
+      state = "double-quote";
+    } else if (char === "/" && next === "*") {
+      output = output.slice(0, -1);
+      state = "comment";
+      index += 1;
+    }
+  }
+
+  return output;
+}
+
+function minifyCss(content) {
+  return stripCssComments(content)
+    .replace(/\s+/g, " ")
+    .replace(/\s*([{}:;,>~])\s*/g, "$1")
+    .replace(/;}/g, "}")
+    .trim();
+}
+
+function minifyTextAssets() {
+  let count = 0;
+  let before = 0;
+  let after = 0;
+
+  for (const file of walkFiles(outputDir)) {
+    const ext = extname(file).toLowerCase();
+
+    if (!minifyExtensions.has(ext)) {
+      continue;
+    }
+
+    const original = readFileSync(file, "utf8");
+    const minified = ext === ".css" ? minifyCss(original) : minifyJs(original);
+
+    before += Buffer.byteLength(original);
+    after += Buffer.byteLength(minified);
+
+    if (minified !== original) {
+      writeFileSync(file, `${minified}\n`);
+    }
+
+    count += 1;
+  }
+
+  return { count, before, after };
 }
 
 function rewriteReferences(rewrites) {
@@ -318,10 +482,12 @@ const imageRewrites = optimizeImages();
 rewriteReferences(imageRewrites);
 const optimizedVideos = optimizeVideos();
 rewriteReferences(optimizedVideos.rewrites);
+const minifiedAssets = minifyTextAssets();
 const finalSize = dirSize(outputDir);
 
 console.log(`Built ${relative(rootDir, outputDir)}`);
 console.log(`Group avatar thumbnails: ${avatarThumbs}`);
 console.log(`Images converted: ${imageRewrites.length}`);
 console.log(`Videos optimized: ${optimizedVideos.count}`);
+console.log(`CSS/JS minified: ${minifiedAssets.count} (${formatBytes(minifiedAssets.before)} -> ${formatBytes(minifiedAssets.after)})`);
 console.log(`Size: ${formatBytes(initialSize)} -> ${formatBytes(finalSize)}`);
