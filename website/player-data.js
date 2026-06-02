@@ -174,7 +174,7 @@
       odds: "22,00",
       weapon: "Priča se da je pobijedio zid 1v1",
       weakness: "Napada samo ako nema drugog izbora",
-      quote: "Ala čekaju me doma lazanje u šaheru...",
+      quote: "Čekaju me lazanje u špaheru doma...",
       accent: "#577590",
     }
   ];

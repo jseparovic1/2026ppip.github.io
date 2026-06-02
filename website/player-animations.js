@@ -10,6 +10,7 @@
     "ian-miocic": "./assets/player-avatar-animations/ian-miocic.mp4",
     "ivan-martinac": "./assets/player-avatar-animations/ivan-martinac.mp4",
     "ivan-tomic": "./assets/player-avatar-animations/ivan-tomic.mp4",
+    "jurica-separovic": "./assets/player-avatar-animations/jurica-separovic.mp4",
     "mario-soco": "./assets/player-avatar-animations/mario-soco.mp4",
     "marko-dragunic": "./assets/player-avatar-animations/marko-dragunic.mp4",
     "marko-martinovic": "./assets/player-avatar-animations/marko-martinovic.mp4",
