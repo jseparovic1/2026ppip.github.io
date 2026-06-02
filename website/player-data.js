@@ -18,7 +18,7 @@
       image: "./assets/player-promos/ppip_dragunic_marko_avatar_v1.png",
       imageScale: "0.92",
       odds: "80,00",
-      weapon: "Veliki taktičar s ubojitim servisom",
+      weapon: "Veliki taktičar sa ubojitim servisom",
       weakness: "Teško odvaja noge od poda",
       quote: "Sad si dobio životnu lekciju!",
       accent: "#ff6b35",
