@@ -8,7 +8,7 @@
       imageScale: "0.9",
       odds: "99,00",
       weapon: "Ubojit iz bilo koje pozicije na terenu",
-      weakness: "Čisti fokus na napad, izbjegava obranu k'o poziv za vojsku",
+      weakness: "Izbjegava obranu k'o poziv za vojsku",
       quote: "Športski pozdrav!",
       accent: "#f5b700",
     },
