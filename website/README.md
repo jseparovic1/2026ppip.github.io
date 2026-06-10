@@ -7,7 +7,7 @@ Static website runtime for the PPiP Spring Edition page. Generated media lives i
 Run the local development server:
 
 ```bash
-docker compose -f website/compose.yaml up --build website
+docker compose -f website/compose.yaml up website
 ```
 
 Open:
@@ -17,7 +17,7 @@ http://localhost:8123
 http://127.0.0.1:8123
 ```
 
-The service builds a static Nginx image from the multi-stage `Dockerfile`. Re-run with `--build` after changing site files.
+The service serves the local `website/` directory through Nginx, so HTML, CSS, JS, and asset changes are reflected on refresh without rebuilding the image. Re-run with `--build` only after changing `Dockerfile` or `nginx.conf`.
 
 ## Deployment
 

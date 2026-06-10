@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raspored | PPiP 2026 Spring Edition</title>
+  <meta name="description" content="Okvirni raspored utakmica za PPiP 2026 Spring Edition.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050d19">
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="schedule-page">
+  <nav class="route-nav" aria-label="Glavna navigacija">
+    <div class="route-nav-links">
+      <a href="../">Turnir</a>
+      <a href="./" aria-current="page">Raspored</a>
+      <a href="../bets/">Kladionica</a>
+    </div>
+  </nav>
+
+  <div class="page-shell">
+    <main class="schedule-page-shell">
+      <section class="schedule-section" id="raspored">
+        <div class="section-heading">
+          <div>
+            <span class="section-tag">13.06.2026 · Start 08:00</span>
+            <h2>Raspored</h2>
+          </div>
+        </div>
+
+        <div id="schedule-app" class="schedule-app" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <img src="../assets/materials/logo.png" alt="PPiP logo" class="site-footer-logo">
+        <p class="site-footer-copy">PPiP 2026. Sva prava pridržana.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../player-data.js"></script>
+  <script src="../schedule-data.js"></script>
+  <script src="../schedule.js"></script>
+</body>
+</html>

@@ -22,17 +22,20 @@ const keepOriginalImages = new Set([
 const deployFiles = [
   "index.html",
   "bets.html",
+  "raspored.html",
   "app.js",
   "odds.js",
   "player-animations.js",
   "player-data.js",
+  "schedule-data.js",
+  "schedule.js",
   "styles.css",
   "CNAME",
   "favicon.png",
   "apple-touch-icon.png"
 ];
 
-const deployDirs = ["assets", "bets"];
+const deployDirs = ["assets", "bets", "raspored"];
 
 function hasCommand(command) {
   const check = spawnSync(command, ["-version"], { stdio: "ignore" });

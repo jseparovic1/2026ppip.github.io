@@ -2,9 +2,10 @@ FROM alpine:3.20 AS site
 
 WORKDIR /site
 
-COPY index.html bets.html app.js odds.js player-animations.js player-data.js styles.css ./
+COPY index.html bets.html raspored.html app.js odds.js player-animations.js player-data.js schedule-data.js schedule.js styles.css ./
 COPY assets ./assets
 COPY bets ./bets
+COPY raspored ./raspored
 
 RUN test -f index.html && test -d assets
 
