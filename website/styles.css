@@ -211,7 +211,7 @@ body.is-past-hero .route-nav-after-hero {
     linear-gradient(180deg, rgba(3, 9, 20, 0.34) 0%, rgba(3, 9, 20, 0.58) 52%, rgba(3, 9, 20, 0.98) 100%),
     linear-gradient(96deg, rgba(3, 9, 20, 0.78) 0%, rgba(3, 9, 20, 0.44) 48%, rgba(3, 9, 20, 0.74) 100%),
     radial-gradient(ellipse at 50% 112%, rgba(214, 160, 79, 0.16), transparent 44%),
-    url("./assets/materials/arena.png") center 44% / min(100vw, 1180px) auto no-repeat,
+    url("/assets/materials/arena.png") center 44% / min(100vw, 1180px) auto no-repeat,
     linear-gradient(145deg, #030914 0%, #07172a 48%, #0a2135 100%);
 }
 
@@ -692,9 +692,8 @@ h1 {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 14%),
     radial-gradient(circle at top right, rgba(214, 160, 79, 0.12), transparent 34%),
-    linear-gradient(145deg, rgba(7, 18, 33, 0.94), rgba(5, 12, 24, 0.9)),
-    url("./assets/materials/flyer_2025.jpg") center/cover;
-  background-blend-mode: screen, normal, normal, overlay;
+    linear-gradient(145deg, rgba(7, 18, 33, 0.94), rgba(5, 12, 24, 0.9));
+  background-blend-mode: screen, normal, normal;
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
 }
@@ -2087,7 +2086,7 @@ body.odds-page {
     background:
       linear-gradient(180deg, rgba(3, 9, 20, 0.28) 0%, rgba(3, 9, 20, 0.52) 48%, rgba(3, 9, 20, 0.99) 100%),
       linear-gradient(90deg, rgba(3, 9, 20, 0.62) 0%, rgba(3, 9, 20, 0.38) 50%, rgba(3, 9, 20, 0.62) 100%),
-      url("./assets/materials/arena.png") center 44% / auto 100% no-repeat,
+      url("/assets/materials/arena.png") center 44% / auto 100% no-repeat,
       linear-gradient(145deg, #030914 0%, #07172a 48%, #0a2135 100%);
   }
 

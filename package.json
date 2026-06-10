@@ -3,8 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-website.mjs --strict",
-    "build:local": "node scripts/build-website.mjs",
-    "build:images": "node scripts/build-website.mjs --skip-video"
+    "dev": "vite website",
+    "build": "vite build website && node scripts/optimize-media.mjs --strict",
+    "build:local": "vite build website && node scripts/optimize-media.mjs",
+    "build:images": "vite build website && node scripts/optimize-media.mjs --skip-video"
+  },
+  "devDependencies": {
+    "vite": "^8.0.16"
   }
 }

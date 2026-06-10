@@ -1,6 +1,6 @@
 # PPiP Website
 
-Static website runtime for the PPiP Spring Edition page. Generated media lives in `website/assets/`; generation tooling lives in `imagegen/`.
+Static website runtime for the PPiP Spring Edition page. Generated media lives in `website/public/assets/` (referenced as `/assets/...`); generation tooling lives in `imagegen/`.
 
 ## Development
 
@@ -19,16 +19,21 @@ http://127.0.0.1:8123
 
 The service serves the local `website/` directory through Nginx, so HTML, CSS, JS, and asset changes are reflected on refresh without rebuilding the image. Re-run with `--build` only after changing `Dockerfile` or `nginx.conf`.
 
+## Build
+
+The build is [Vite](https://vite.dev) (multi-page: `/`, `/raspored/`, `/bets/`) plus a media post-pass:
+
+1. `vite build website` bundles, minifies, and content-hashes CSS/JS, and copies `public/` (assets, CNAME, favicons) verbatim.
+2. `node scripts/optimize-media.mjs` generates group avatar thumbnails, converts images to WebP, recompresses videos with `ffmpeg`, and rewrites references.
+
 ## Deployment
 
-GitHub Actions builds an optimized `dist/website/` artifact from this `website/` directory and deploys that artifact to GitHub Pages on pushes to `main`.
-The `CNAME` file configures the custom domain:
+GitHub Actions runs `npm ci && npm run build` and deploys `dist/website/` to GitHub Pages on pushes to `main`.
+The `public/CNAME` file configures the custom domain:
 
 ```text
 ppip.online
 ```
-
-The build keeps source media unchanged, strips dotfiles from deployable assets, converts deploy images to WebP, and recompresses deploy videos with `ffmpeg`.
 
 Player animation source files should also be optimized before committing. See
 `imagegen/README.md` for the player video optimization workflow.

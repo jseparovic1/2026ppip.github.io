@@ -4,7 +4,7 @@
     {
       name: "Željko Bilić",
       nickname: "Žele",
-      image: "./assets/player-promos/ppip_bilic_zeljko_avatar_v1.png",
+      image: "/assets/player-promos/ppip_bilic_zeljko_avatar_v1.png",
       imageScale: "0.9",
       odds: "99,00",
       weapon: "Smash ide iz bilo koje pozicije na terenu",
@@ -15,7 +15,7 @@
     {
       name: "Marko Dragunić",
       nickname: "Dragi",
-      image: "./assets/player-promos/ppip_dragunic_marko_avatar_v1.png",
+      image: "/assets/player-promos/ppip_dragunic_marko_avatar_v1.png",
       imageScale: "0.92",
       odds: "80,00",
       weapon: "Veliki taktičar sa ubojitim servisom",
@@ -26,7 +26,7 @@
     {
       name: "Mateo Gugić",
       nickname: "Greg",
-      image: "./assets/player-promos/ppip_gugic_mateo_avatar_v1.png",
+      image: "/assets/player-promos/ppip_gugic_mateo_avatar_v1.png",
       imageScale: "0.92",
       odds: "85,00",
       weapon: "Bijes",
@@ -37,7 +37,7 @@
     {
       name: "Filip Iviš",
       nickname: "Profesor",
-      image: "./assets/player-promos/ppip_ivis_filip_avatar_v1.png",
+      image: "/assets/player-promos/ppip_ivis_filip_avatar_v1.png",
       imageScale: "0.93",
       odds: "2,70",
       weapon: "Školovao je mnoge",
@@ -48,7 +48,7 @@
     {
       name: "Antonio Jonjić",
       nickname: "Zagadur",
-      image: "./assets/player-promos/ppip_jonjic_antonio_avatar_v1.png",
+      image: "/assets/player-promos/ppip_jonjic_antonio_avatar_v1.png",
       imageScale: "0.9",
       odds: "5,00",
       weapon: "Udarac koji nisu ni državni padel prvaci uspjeli pročitat, jednom riječju 'specijalka'.",
@@ -59,7 +59,7 @@
     {
       name: "Borna Katavić",
       nickname: "Taksist",
-      image: "./assets/player-promos/ppip_katavic_borna_avatar_v1.png",
+      image: "/assets/player-promos/ppip_katavic_borna_avatar_v1.png",
       imageScale: "0.92",
       odds: "99,00",
       weapon: "Noćna tarifa",
@@ -70,7 +70,7 @@
     {
       name: "Vanja Lopušinsky",
       nickname: "Vanja",
-      image: "./assets/player-promos/ppip_lopusinsky_vanja_avatar_v1.png",
+      image: "/assets/player-promos/ppip_lopusinsky_vanja_avatar_v1.png",
       imageScale: "0.9",
       odds: "15,00",
       weapon: "Snaga živaca",
@@ -81,7 +81,7 @@
     {
       name: "Ivan Martinac",
       nickname: "Šef",
-      image: "./assets/player-promos/ppip_martinac_ivan_avatar_v1.png",
+      image: "/assets/player-promos/ppip_martinac_ivan_avatar_v1.png",
       imageScale: "0.93",
       odds: "99,00",
       weapon: "Forhend paralela",
@@ -92,7 +92,7 @@
     {
       name: "Marko Martinović",
       nickname: "Markan",
-      image: "./assets/player-promos/ppip_martinovic_marko_avatar_v1.png",
+      image: "/assets/player-promos/ppip_martinovic_marko_avatar_v1.png",
       imageScale: "0.9",
       odds: "99,00",
       weapon: "Dragi",
@@ -103,7 +103,7 @@
     {
       name: "Borna Mešin",
       nickname: "Mešo",
-      image: "./assets/player-promos/ppip_mesin_borna_avatar_v1.png",
+      image: "/assets/player-promos/ppip_mesin_borna_avatar_v1.png",
       imageScale: "0.9",
       odds: "∞",
       weapon: "Opasan kao kamilica",
@@ -114,7 +114,7 @@
     {
       name: "Franko Miočić",
       nickname: "Stariji brat",
-      image: "./assets/player-promos/ppip_miocic_franko_avatar_v1.png",
+      image: "/assets/player-promos/ppip_miocic_franko_avatar_v1.png",
       imageScale: "0.9",
       odds: "2,50",
       weapon: "Bekend volejom ubija, a forhenda se i sam boji",
@@ -125,7 +125,7 @@
     {
       name: "Ian Miočić",
       nickname: "Ean",
-      image: "./assets/player-promos/ppip_miocic_ian_avatar_v1.png",
+      image: "/assets/player-promos/ppip_miocic_ian_avatar_v1.png",
       imageScale: "0.9",
       odds: "25,00",
       weapon: "Svaki udarac je ubojit",
@@ -136,7 +136,7 @@
     {
       name: "Antonio Rajković",
       nickname: "Ćaća",
-      image: "./assets/player-promos/ppip_rajkovic_antonio_avatar_v1.png",
+      image: "/assets/player-promos/ppip_rajkovic_antonio_avatar_v1.png",
       imageScale: "0.94",
       odds: "99,00",
       weapon: "Zna nekad skratit ako se sve poklopi",
@@ -147,7 +147,7 @@
     {
       name: "Jurica Šeparović",
       nickname: "Šep",
-      image: "./assets/player-promos/ppip_separovic_jurica_avatar_v1.png",
+      image: "/assets/player-promos/ppip_separovic_jurica_avatar_v1.png",
       imageScale: "0.94",
       odds: "15,00",
       weapon: "Precizan kao snajper",
@@ -158,7 +158,7 @@
     {
       name: "Mario Sočo",
       nickname: "Kapetan",
-      image: "./assets/player-promos/ppip_soco_mario_avatar_v2.png",
+      image: "/assets/player-promos/ppip_soco_mario_avatar_v2.png",
       imageScale: "0.9",
       odds: "2,00",
       weapon: "Strpljiv kao da mu plaćaju po odbijanju loptice od stakla",
@@ -169,7 +169,7 @@
     {
       name: "Ivan Tomić",
       nickname: "Starac",
-      image: "./assets/player-promos/ppip_tomic_ivan_avatar_v1.png",
+      image: "/assets/player-promos/ppip_tomic_ivan_avatar_v1.png",
       imageScale: "0.92",
       odds: "22,00",
       weapon: "Priča se da je pobijedio zid 1v1",
