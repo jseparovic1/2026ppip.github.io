@@ -1,4 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, extname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -270,6 +271,51 @@ function minifyTextAssets() {
   return { count, before, after };
 }
 
+function cacheBustAssetReferences() {
+  const hashes = new Map();
+
+  for (const file of walkFiles(outputDir)) {
+    const ext = extname(file).toLowerCase();
+
+    if (ext !== ".css" && ext !== ".js") {
+      continue;
+    }
+
+    const hash = createHash("md5").update(readFileSync(file)).digest("hex").slice(0, 10);
+    hashes.set(relative(outputDir, file), hash);
+  }
+
+  let count = 0;
+
+  for (const file of walkFiles(outputDir)) {
+    if (extname(file).toLowerCase() !== ".html") {
+      continue;
+    }
+
+    let content = readFileSync(file, "utf8");
+    let changed = false;
+
+    for (const [rel, hash] of hashes) {
+      for (const prefix of ["./", "../"]) {
+        const needle = `"${prefix}${rel}"`;
+        const replacement = `"${prefix}${rel}?v=${hash}"`;
+
+        if (content.includes(needle)) {
+          content = content.split(needle).join(replacement);
+          changed = true;
+        }
+      }
+    }
+
+    if (changed) {
+      writeFileSync(file, content);
+      count += 1;
+    }
+  }
+
+  return count;
+}
+
 function rewriteReferences(rewrites) {
   if (rewrites.length === 0) {
     return;
@@ -488,6 +534,7 @@ rewriteReferences(imageRewrites);
 const optimizedVideos = optimizeVideos();
 rewriteReferences(optimizedVideos.rewrites);
 const minifiedAssets = minifyTextAssets();
+const cacheBustedPages = cacheBustAssetReferences();
 const finalSize = dirSize(outputDir);
 
 console.log(`Built ${relative(rootDir, outputDir)}`);
@@ -495,4 +542,5 @@ console.log(`Group avatar thumbnails: ${avatarThumbs}`);
 console.log(`Images converted: ${imageRewrites.length}`);
 console.log(`Videos optimized: ${optimizedVideos.count}`);
 console.log(`CSS/JS minified: ${minifiedAssets.count} (${formatBytes(minifiedAssets.before)} -> ${formatBytes(minifiedAssets.after)})`);
+console.log(`Pages cache-busted: ${cacheBustedPages}`);
 console.log(`Size: ${formatBytes(initialSize)} -> ${formatBytes(finalSize)}`);

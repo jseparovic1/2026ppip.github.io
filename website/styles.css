@@ -73,7 +73,7 @@ body::before {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  width: min(320px, calc(100% - 32px));
+  width: min(560px, calc(100% - 32px));
   padding: 8px;
   border: 1px solid rgba(204, 230, 226, 0.16);
   background:
@@ -103,7 +103,7 @@ body.is-past-hero .route-nav-after-hero {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
+  min-height: 42px;
   color: #edf7ff;
   text-decoration: none;
   text-transform: uppercase;
@@ -111,7 +111,7 @@ body.is-past-hero .route-nav-after-hero {
 
 .route-nav-links {
   display: grid;
-  grid-template-columns: repeat(3, minmax(80px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4px;
 }
 
@@ -119,9 +119,10 @@ body.is-past-hero .route-nav-after-hero {
   position: relative;
   padding: 0 12px;
   color: rgba(237, 247, 255, 0.72);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
+  white-space: nowrap;
   transition: background 180ms ease, color 180ms ease;
 }
 
