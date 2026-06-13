@@ -1,7 +1,7 @@
 (function () {
   var OFFSET_STORAGE_KEY = "ppip-schedule-offset";
   var OFFSET_LIMIT = 120;
-  var DEFAULT_OFFSET_MINUTES = 10;
+  var DEFAULT_OFFSET_MINUTES = 15;
   var STAGE_LABELS = { "1/4": "Četvrtfinale", "1/2": "Polufinale", F: "Finale" };
   var BRACKET_LABELS = { glavni: "Glavni ždrijeb", utjesni: "Utješni ždrijeb" };
   var FORMAT_LABELS = { "6": "1 set do 6", "2x4": "2 seta do 4" };
