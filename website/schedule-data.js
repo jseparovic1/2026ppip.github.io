@@ -40,7 +40,7 @@
       { start: "16:40", end: "17:00", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6", sides: [{ player: "franko-miocic", score: 6 }, { player: "zeljko-bilic", score: 5 }] },
       { start: "17:00", end: "17:20", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6", sides: [{ player: "antonio-jonjic", score: 6 }, { player: "borna-katavic", score: 4 }] },
       { start: "17:20", end: "17:40", phase: "zavrsnica", stage: "1/2", bracket: "utjesni", format: "6", sides: [{ player: "ivan-tomic" }, { player: "marko-martinovic" }] },
-      { start: "17:40", end: "18:00", phase: "zavrsnica", stage: "1/2", bracket: "utjesni", format: "6" },
+      { start: "17:40", end: "18:00", phase: "zavrsnica", stage: "1/2", bracket: "utjesni", format: "6", sides: [{ player: "vanja-lopusinsky" }, { player: "mateo-gugic" }] },
       { start: "18:00", end: "18:30", phase: "zavrsnica", stage: "1/2", bracket: "glavni", format: "2x4", sides: [{ player: "mario-soco" }, { player: "jurica-separovic" }] },
       { start: "18:30", end: "19:00", phase: "zavrsnica", stage: "1/2", bracket: "glavni", format: "2x4", sides: [{ player: "antonio-jonjic" }, { player: "franko-miocic" }] },
       { start: "19:00", end: "19:30", phase: "zavrsnica", stage: "F", bracket: "utjesni", format: "2x4" },
