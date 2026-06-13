@@ -239,6 +239,10 @@
             })
             .join(" · ")
         : "";
+      var matchTiebreak = Array.isArray(slot.matchTiebreak) && slot.matchTiebreak.length === 2
+        ? "TB " + slot.matchTiebreak[0] + ":" + slot.matchTiebreak[1]
+        : "";
+      var detailScores = [setScores, matchTiebreak].filter(Boolean).join(" · ");
 
       return [
         '<article class="bracket-match" id="' + slot.id + '">',
@@ -250,7 +254,7 @@
         "</span>",
         '<span class="schedule-live-badge" hidden>Uživo</span>',
         slot.format ? '<span class="bracket-match-format">' + (FORMAT_LABELS[slot.format] || slot.format) + "</span>" : "",
-        setScores ? '<span class="bracket-set-scores">' + escapeHtml(setScores) + "</span>" : "",
+        detailScores ? '<span class="bracket-set-scores">' + escapeHtml(detailScores) + "</span>" : "",
         "</div>",
         renderBracketSide(sides[0], winnerIndex === 0),
         renderBracketSide(sides[1], winnerIndex === 1),
