@@ -418,6 +418,20 @@
       });
     }
 
+    function scrollToLiveSlot() {
+      var liveElement = root.querySelector(".is-live");
+      if (!liveElement) {
+        return;
+      }
+
+      window.setTimeout(function () {
+        liveElement.scrollIntoView({
+          block: "center",
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        });
+      }, 120);
+    }
+
     root.addEventListener("click", function (event) {
       var chip = event.target.closest("[data-filter-slug]");
       if (chip) {
@@ -451,6 +465,7 @@
     applyOffset();
     applyFilter();
     updateLiveStatuses();
+    scrollToLiveSlot();
     window.setInterval(updateLiveStatuses, 30000);
   }
 
