@@ -1,6 +1,7 @@
 (function () {
   var OFFSET_STORAGE_KEY = "ppip-schedule-offset";
   var OFFSET_LIMIT = 120;
+  var DEFAULT_OFFSET_MINUTES = 10;
   var STAGE_LABELS = { "1/4": "Četvrtfinale", "1/2": "Polufinale", F: "Finale" };
   var BRACKET_LABELS = { glavni: "Glavni ždrijeb", utjesni: "Utješni ždrijeb" };
   var FORMAT_LABELS = { "6": "1 set do 6", "2x4": "2 seta do 4" };
@@ -77,11 +78,12 @@
     }
 
     var filterSlug = "";
-    var offsetMinutes = 0;
+    var offsetMinutes = DEFAULT_OFFSET_MINUTES;
 
     try {
-      var storedOffset = Number(window.localStorage.getItem(OFFSET_STORAGE_KEY));
-      if (Number.isFinite(storedOffset)) {
+      var rawStoredOffset = window.localStorage.getItem(OFFSET_STORAGE_KEY);
+      var storedOffset = Number(rawStoredOffset);
+      if (rawStoredOffset !== null && Number.isFinite(storedOffset)) {
         offsetMinutes = Math.max(-OFFSET_LIMIT, Math.min(OFFSET_LIMIT, Math.round(storedOffset / 5) * 5));
       }
     } catch (error) {
@@ -178,7 +180,10 @@
       if (!Array.isArray(slot.score) || slot.score.length !== 2) {
         return "";
       }
-      return '<span class="schedule-score">' + slot.score[0] + " : " + slot.score[1] + "</span>";
+      var tiebreak = Array.isArray(slot.tiebreak) && slot.tiebreak.length === 2
+        ? ' <small>(' + slot.tiebreak[0] + ":" + slot.tiebreak[1] + ")</small>"
+        : "";
+      return '<span class="schedule-score">' + slot.score[0] + " : " + slot.score[1] + tiebreak + "</span>";
     }
 
     function renderSlot(slot) {
