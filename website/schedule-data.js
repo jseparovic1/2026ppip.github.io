@@ -15,7 +15,7 @@
       { start: "10:15", end: "10:30", phase: "grupe", group: "B", players: ["marko-dragunic", "borna-katavic"] },
       { start: "10:30", end: "10:45", phase: "grupe", group: "D", players: ["filip-ivis", "zeljko-bilic"], score: [0, 4] },
       { start: "10:45", end: "11:00", phase: "grupe", group: "B", players: ["marko-dragunic", "ivan-martinac"], score: [4, 3], tiebreak: [5, 2] },
-      { start: "11:00", end: "11:15", phase: "grupe", group: "D", players: ["filip-ivis", "ivan-tomic"] },
+      { start: "11:00", end: "11:15", phase: "grupe", group: "D", players: ["filip-ivis", "ivan-tomic"], score: [0, 4] },
       { start: "11:15", end: "11:30", phase: "grupe", group: "B", players: ["marko-dragunic", "marko-martinovic"], score: [4, 0] },
       { start: "11:30", end: "11:45", phase: "grupe", group: "D", players: ["filip-ivis", "mario-soco"] },
       { start: "11:45", end: "12:00", phase: "grupe", group: "C", players: ["borna-mesin", "jurica-separovic"] },
