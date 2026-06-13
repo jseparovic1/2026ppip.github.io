@@ -3078,9 +3078,13 @@ body.schedule-page .schedule-section {
 }
 
 .bracket-side-name {
+  min-width: 0;
+  overflow: hidden;
   font-size: 0.9rem;
   font-weight: 700;
   color: #e7eceb;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bracket-side.is-tbd .bracket-side-name {

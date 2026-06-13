@@ -205,7 +205,7 @@
 
     function renderBracketSide(side, isWinner) {
       var player = side && side.player ? playersBySlug[side.player] : null;
-      var name = player ? shortPlayerName(side.player) : side && side.label ? side.label : "TBD";
+      var name = player ? player.name : side && side.label ? side.label : "TBD";
       var hasScore = side && typeof side.score === "number";
       var classes = ["bracket-side"];
 
