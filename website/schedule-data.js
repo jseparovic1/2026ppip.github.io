@@ -23,7 +23,7 @@
       { start: "12:15", end: "12:30", phase: "grupe", group: "A", players: ["ian-miocic", "vanja-lopusinsky"], score: [4, 3] },
       { start: "12:30", end: "12:45", phase: "grupe", group: "C", players: ["mateo-gugic", "borna-mesin"], score: [4, 0] },
       { start: "12:45", end: "13:00", phase: "grupe", group: "B", players: ["ivan-martinac", "borna-katavic"], score: [0, 4] },
-      { start: "13:00", end: "13:15", phase: "grupe", group: "D", players: ["mario-soco", "ivan-tomic"] },
+      { start: "13:00", end: "13:15", phase: "grupe", group: "D", players: ["mario-soco", "ivan-tomic"], score: [4, 0] },
       { start: "13:15", end: "13:30", phase: "grupe", group: "A", players: ["antonio-rajkovic", "ian-miocic"] },
       { start: "13:30", end: "13:45", phase: "grupe", group: "B", players: ["borna-katavic", "marko-martinovic"] },
       { start: "13:45", end: "14:00", phase: "grupe", group: "C", players: ["mateo-gugic", "jurica-separovic"] },
