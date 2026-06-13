@@ -229,6 +229,16 @@
       var scoreA = sides[0] && typeof sides[0].score === "number" ? sides[0].score : null;
       var scoreB = sides[1] && typeof sides[1].score === "number" ? sides[1].score : null;
       var winnerIndex = scoreA !== null && scoreB !== null && scoreA !== scoreB ? (scoreA > scoreB ? 0 : 1) : -1;
+      var setScores = Array.isArray(slot.setScores)
+        ? slot.setScores
+            .filter(function (score) {
+              return Array.isArray(score) && score.length === 2;
+            })
+            .map(function (score) {
+              return score[0] + ":" + score[1];
+            })
+            .join(" · ")
+        : "";
 
       return [
         '<article class="bracket-match" id="' + slot.id + '">',
@@ -240,6 +250,7 @@
         "</span>",
         '<span class="schedule-live-badge" hidden>Uživo</span>',
         slot.format ? '<span class="bracket-match-format">' + (FORMAT_LABELS[slot.format] || slot.format) + "</span>" : "",
+        setScores ? '<span class="bracket-set-scores">' + escapeHtml(setScores) + "</span>" : "",
         "</div>",
         renderBracketSide(sides[0], winnerIndex === 0),
         renderBracketSide(sides[1], winnerIndex === 1),

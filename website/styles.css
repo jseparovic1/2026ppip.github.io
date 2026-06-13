@@ -3068,6 +3068,14 @@ body.schedule-page .schedule-section {
   text-transform: uppercase;
 }
 
+.bracket-set-scores {
+  flex-basis: 100%;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .bracket-side {
   display: flex;
   align-items: center;
