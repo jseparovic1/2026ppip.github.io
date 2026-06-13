@@ -37,7 +37,7 @@
       { start: "15:45", end: "16:00", phase: "grupe", group: "A", players: ["franko-miocic", "vanja-lopusinsky"], score: [4, 0] },
       { start: "16:00", end: "16:20", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6", sides: [{ player: "mario-soco", score: 6 }, { player: "marko-dragunic", score: 4 }] },
       { start: "16:20", end: "16:40", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6", sides: [{ player: "jurica-separovic", score: 6 }, { player: "ian-miocic", score: 3 }] },
-      { start: "16:40", end: "17:00", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6" },
+      { start: "16:40", end: "17:00", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6", sides: [{ player: "franko-miocic", score: 6 }, { player: "zeljko-bilic", score: 5 }] },
       { start: "17:00", end: "17:20", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6" },
       { start: "17:20", end: "17:40", phase: "zavrsnica", stage: "1/2", bracket: "utjesni", format: "6" },
       { start: "17:40", end: "18:00", phase: "zavrsnica", stage: "1/2", bracket: "utjesni", format: "6" },
