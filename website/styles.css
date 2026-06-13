@@ -2310,19 +2310,20 @@ body.odds-page {
 @media (max-width: 640px) {
   .hero-title-wrap,
   .hero-title-wrap-reset {
-    gap: 14px;
+    gap: 18px;
   }
 
   .hero-edition-mark {
     max-width: min(100%, 9.5ch);
+    margin-top: 4px;
   }
 
   .hero-brand-word {
-    font-size: clamp(4.65rem, 23vw, 7.2rem);
+    font-size: clamp(4.15rem, 20vw, 6.4rem);
   }
 
   .hero-season-word {
-    font-size: clamp(2.08rem, 12.8vw, 4.6rem);
+    font-size: clamp(1.88rem, 11vw, 4rem);
   }
 
   .hero-manifesto {
