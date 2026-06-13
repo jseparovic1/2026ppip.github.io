@@ -313,46 +313,6 @@
     playerPickerNext.setAttribute("aria-label", "Sljedeći igrač: " + playersWithSlugs[nextIndex].name);
   }
 
-  function getGroupPointsBySlug() {
-    const schedule = window.PPIP_SCHEDULE;
-    const pointsBySlug = {};
-
-    if (!schedule || !Array.isArray(schedule.slots)) {
-      return pointsBySlug;
-    }
-
-    schedule.slots.forEach(function (slot) {
-      if (slot.phase !== "grupe" || !Array.isArray(slot.players) || !Array.isArray(slot.score) || slot.score.length !== 2) {
-        return;
-      }
-
-      const winnerSlug = slot.score[0] > slot.score[1] ? slot.players[0] : slot.score[1] > slot.score[0] ? slot.players[1] : "";
-      if (winnerSlug) {
-        pointsBySlug[winnerSlug] = (pointsBySlug[winnerSlug] || 0) + 1;
-      }
-    });
-
-    return pointsBySlug;
-  }
-
-  function hydrateGroupPoints() {
-    const pointsBySlug = getGroupPointsBySlug();
-
-    document.querySelectorAll(".group-player-link[data-player-slug]").forEach(function (link) {
-      const slug = link.getAttribute("data-player-slug");
-
-      if (!slug || link.querySelector(".group-player-points")) {
-        return;
-      }
-
-      const points = document.createElement("span");
-      points.className = "group-player-points";
-      points.textContent = String(pointsBySlug[slug] || 0);
-      points.setAttribute("aria-label", (pointsBySlug[slug] || 0) + " bodova");
-      link.appendChild(points);
-    });
-  }
-
   function scrollSelectorToIndex(index) {
     updateSelectorState();
   }
@@ -469,8 +429,6 @@
   playerPickerNext.addEventListener("click", function () {
     selectPlayerByOffset(1);
   });
-
-  hydrateGroupPoints();
 
   document.querySelectorAll("[data-player-slug]").forEach(function (link) {
     link.addEventListener("click", function (event) {

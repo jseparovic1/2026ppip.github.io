@@ -1088,19 +1088,6 @@ article.event-info-card-location strong {
   transform: none;
 }
 
-.group-player-points {
-  justify-self: end;
-  min-width: 54px;
-  padding: 5px 8px;
-  border: 1px solid rgba(214, 160, 79, 0.34);
-  background: rgba(214, 160, 79, 0.1);
-  color: var(--gold);
-  font-family: "Bebas Neue", Impact, sans-serif;
-  font-size: 1.08rem;
-  line-height: 1;
-  text-align: center;
-}
-
 .group-player-thumb {
   width: 44px;
   height: 44px;
