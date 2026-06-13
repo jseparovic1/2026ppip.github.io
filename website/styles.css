@@ -1122,6 +1122,79 @@ article.event-info-card-location strong {
   letter-spacing: 0.04em;
 }
 
+.group-standings {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(214, 160, 79, 0.18);
+}
+
+.group-standings-header,
+.group-standing-row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 42px 42px;
+  gap: 8px;
+  align-items: center;
+}
+
+.group-standings-header {
+  padding: 0 0 8px;
+  color: rgba(204, 230, 226, 0.58);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.group-standings-header span:first-child {
+  grid-column: 2;
+}
+
+.group-standings-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group-standing-row {
+  min-height: 34px;
+  padding: 7px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.group-standing-rank,
+.group-standing-points {
+  color: var(--gold);
+  font-family: "Bebas Neue", Impact, sans-serif;
+  line-height: 1;
+}
+
+.group-standing-rank {
+  font-size: 1rem;
+}
+
+.group-standing-name {
+  overflow: hidden;
+  color: #e7eceb;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.group-standing-points {
+  justify-self: center;
+  font-size: 1.18rem;
+}
+
+.group-standing-record {
+  justify-self: end;
+  color: rgba(204, 230, 226, 0.72);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
 body.odds-page {
   min-height: 100vh;
   background:

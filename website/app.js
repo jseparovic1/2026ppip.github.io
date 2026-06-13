@@ -331,6 +331,103 @@
     });
   }
 
+  function renderGroupStandings() {
+    const schedule = window.PPIP_SCHEDULE;
+
+    if (!schedule || !Array.isArray(schedule.slots)) {
+      return;
+    }
+
+    document.querySelectorAll(".group-card").forEach(function (card) {
+      const groupLabel = card.querySelector(".group-card-header span");
+      const groupMatch = groupLabel && groupLabel.textContent.match(/Grupa\s+([A-Z])/i);
+
+      if (!groupMatch || card.querySelector(".group-standings")) {
+        return;
+      }
+
+      const groupKey = groupMatch[1].toUpperCase();
+      const groupPlayers = Array.from(card.querySelectorAll(".group-player-link[data-player-slug]")).map(function (link, index) {
+        const slug = link.getAttribute("data-player-slug");
+        const player = playersWithSlugs.find(function (rosterPlayer) {
+          return rosterPlayer.slug === slug;
+        });
+
+        return {
+          slug: slug,
+          name: player ? player.name : link.textContent.trim(),
+          order: index,
+          wins: 0,
+          losses: 0,
+          points: 0,
+          played: 0,
+        };
+      });
+      const standingsBySlug = {};
+
+      groupPlayers.forEach(function (row) {
+        standingsBySlug[row.slug] = row;
+      });
+
+      schedule.slots.forEach(function (slot) {
+        if (slot.phase !== "grupe" || slot.group !== groupKey || !Array.isArray(slot.players) || !Array.isArray(slot.score)) {
+          return;
+        }
+
+        const first = standingsBySlug[slot.players[0]];
+        const second = standingsBySlug[slot.players[1]];
+
+        if (!first || !second || slot.score.length !== 2 || slot.score[0] === slot.score[1]) {
+          return;
+        }
+
+        first.played += 1;
+        second.played += 1;
+
+        if (slot.score[0] > slot.score[1]) {
+          first.wins += 1;
+          first.points += 1;
+          second.losses += 1;
+        } else {
+          second.wins += 1;
+          second.points += 1;
+          first.losses += 1;
+        }
+      });
+
+      const rowsHtml = groupPlayers
+        .slice()
+        .sort(function (left, right) {
+          return right.points - left.points || left.order - right.order;
+        })
+        .map(function (row, index) {
+          return [
+            '<li class="group-standing-row">',
+            '  <span class="group-standing-rank">' + (index + 1) + "</span>",
+            '  <span class="group-standing-name">' + row.name + "</span>",
+            '  <strong class="group-standing-points">' + row.points + "</strong>",
+            '  <span class="group-standing-record">' + row.wins + "-" + row.losses + "</span>",
+            "</li>",
+          ].join("");
+        })
+        .join("");
+
+      card.insertAdjacentHTML(
+        "beforeend",
+        [
+          '<div class="group-standings" aria-label="Stanje u ' + groupLabel.textContent.trim() + '">',
+          '  <div class="group-standings-header">',
+          "    <span>Stanje</span>",
+          "    <span>Bod</span>",
+          "    <span>W-L</span>",
+          "  </div>",
+          '  <ol class="group-standings-list">' + rowsHtml + "</ol>",
+          "</div>",
+        ].join(""),
+      );
+    });
+  }
+
   function scrollSelectorToIndex(index) {
     updateSelectorState();
   }
@@ -449,6 +546,7 @@
   });
 
   hydrateGroupOdds();
+  renderGroupStandings();
 
   document.querySelectorAll("[data-player-slug]").forEach(function (link) {
     link.addEventListener("click", function (event) {
