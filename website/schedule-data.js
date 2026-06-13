@@ -32,7 +32,7 @@
       { start: "14:30", end: "14:45", phase: "grupe", group: "C", players: ["antonio-jonjic", "borna-mesin"], score: [4, 1] },
       { start: "14:45", end: "15:00", phase: "grupe", group: "C", players: ["antonio-jonjic", "mateo-gugic"], score: [4, 2] },
       { start: "15:00", end: "15:15", phase: "grupe", group: "A", players: ["franko-miocic", "ian-miocic"], score: [2, 4] },
-      { start: "15:15", end: "15:30", phase: "grupe", group: "A", players: ["franko-miocic", "antonio-rajkovic"] },
+      { start: "15:15", end: "15:30", phase: "grupe", group: "A", players: ["franko-miocic", "antonio-rajkovic"], score: [4, 0] },
       { start: "15:30", end: "15:45", phase: "grupe", group: "C", players: ["antonio-jonjic", "jurica-separovic"] },
       { start: "15:45", end: "16:00", phase: "grupe", group: "A", players: ["franko-miocic", "vanja-lopusinsky"] },
       { start: "16:00", end: "16:20", phase: "zavrsnica", stage: "1/4", bracket: "glavni", format: "6" },
