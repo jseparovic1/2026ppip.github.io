@@ -9,7 +9,7 @@
   //    "player" je slug igrača; dok igrač nije poznat može i { label: "1. Grupa A" }.
   var schedule = {
     tournamentDate: "2026-06-13",
-    note: "Okvirni raspored — vremena su podložna promjenama.",
+    note: "Rezultati i vremena su podložni promjenama.",
     slots: [
       { start: "10:00", end: "10:15", phase: "grupe", group: "A", players: ["antonio-rajkovic", "vanja-lopusinsky"], score: [3, 4], tiebreak: [1, 5] },
       { start: "10:15", end: "10:30", phase: "grupe", group: "B", players: ["marko-dragunic", "borna-katavic"], score: [3, 4], tiebreak: [1, 5] },

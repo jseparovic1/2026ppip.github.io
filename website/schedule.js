@@ -121,7 +121,7 @@
       '<div class="schedule-toolbar">',
       '  <label class="schedule-filter">',
       '    <span class="schedule-filter-label">Igrač</span>',
-      '    <select class="schedule-filter-select" aria-label="Filtriraj raspored po igraču">',
+      '    <select class="schedule-filter-select" aria-label="Filtriraj rezultate po igraču">',
       '      <option value="">Svi igrači</option>',
       filterableSlugs
         .map(function (slug) {
@@ -132,11 +132,11 @@
         .join(""),
       "    </select>",
       "  </label>",
-      '  <div class="schedule-offset" role="group" aria-label="Pomakni raspored">',
+      '  <div class="schedule-offset" role="group" aria-label="Pomakni rezultate">',
       '    <span class="schedule-offset-label">Kasni se?</span>',
       '    <button class="schedule-offset-button" type="button" data-offset-step="-15">−15</button>',
       '    <button class="schedule-offset-button" type="button" data-offset-step="-5">−5</button>',
-      '    <button class="schedule-offset-button schedule-offset-reset" type="button" data-offset-reset aria-label="Vrati raspored na original">0</button>',
+      '    <button class="schedule-offset-button schedule-offset-reset" type="button" data-offset-reset aria-label="Vrati rezultate na original">0</button>',
       '    <button class="schedule-offset-button" type="button" data-offset-step="5">+5</button>',
       '    <button class="schedule-offset-button" type="button" data-offset-step="15">+15</button>',
       '    <span class="schedule-offset-badge" hidden></span>',
